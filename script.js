@@ -84,7 +84,7 @@ function startQuiz(){
   showQuestion()
 
 }
-
+git
 function showQuestion(){
   answerDisabled = false;
   const currentQuestion = quizQuestions[currentQuestionIndex];
@@ -116,11 +116,11 @@ function selectAnswer(event){
   const isCorrect = selectedButton.dataset.correct === "true";
 
   Array.from(answerContainer.children).forEach(button => {
-    if(button.dataset.correct ==="true"){
-      button.classList.add("correct")
+    if(button === selectedButton && button.dataset.correct ==="true"){
+      button.classList.add("correct");
     }
-    else{
-      button.classList.add("incorrect")
+    else if(button === selectedButton){
+      button.classList.add("incorrect");
     }
   })
 
@@ -151,13 +151,13 @@ function showResults(){
   finalScore.textContent= score;
   
   const per = (score/quizQuestions.length)*100;
-    if (percentage === 100) {
+    if (per === 100) {
     resultMessage.textContent = "Perfect! You're a genius!";
-  } else if (percentage >= 80) {
+  } else if (per >= 80) {
     resultMessage.textContent = "Great job! You know your stuff!";
-  } else if (percentage >= 60) {
+  } else if (per >= 60) {
     resultMessage.textContent = "Good effort! Keep learning!";
-  } else if (percentage >= 40) {
+  } else if (per >= 40) {
     resultMessage.textContent = "Not bad! Try again to improve!";
   } else {
     resultMessage.textContent = "Keep studying! You'll get better!";
